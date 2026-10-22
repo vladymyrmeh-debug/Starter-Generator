@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ремонт стартерів та генераторів | Автосервіс</title>
+    <style>
+        :root {
+            --primary: #e67e22;
+            --dark: #2c3e50;
+            --light: #f8f9fa;
+            --text: #333;
+        }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        body {
+            color: var(--text);
+            background-color: var(--light);
+            line-height: 1.6;
+        }
+        header {
+            background-color: var(--dark);
+            color: white;
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        .container {
+            width: 90%;
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo h1 {
+            font-size: 24px;
+            color: var(--primary);
+        }
+        .logo span {
+            color: white;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 20px;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+        nav a:hover {
+            color: var(--primary);
+        }
+        .hero {
+            background: linear-gradient(rgba(44, 62, 80, 0.85), rgba(44, 62, 80, 0.85)), url('https://images.unsplash.com/photo-1486006920555-c77dce18193b?auto=format&fit=crop&w=1200&q=80') no-repeat center center/cover;
+            color: white;
+            padding: 100px 0;
+            text-align: center;
+        }
+        .hero h2 {
+            font-size: 42px;
+            margin-bottom: 20px;
+        }
+        .hero p {
+            font-size: 18px;
+            margin-bottom: 30px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .btn {
+            display: inline-block;
+            background-color: var(--primary);
+            color: white;
+            padding: 12px 30px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+        .btn:hover {
+            background-color: #d35400;
+        }
+        .services {
+            padding: 60px 0;
+            background: white;
+        }
+        .section-title {
+            text-align: center;
+            font-size: 32px;
+            margin-bottom: 40px;
+            color: var(--dark);
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, min-mix(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        .card {
+            background: var(--light);
+            padding: 30px;
+            border-radius: 8px;
+            border-top: 5px solid var(--primary);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+        .card h3 {
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+        .card ul {
+            list-style-type: none;
+        }
+        .card ul li {
+            margin-bottom: 8px;
+            position: relative;
+            padding-left: 20px;
+        }
+        .card ul li::before {
+            content: "✓";
+            color: var(--primary);
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+        .advantages {
+            padding: 60px 0;
+        }
+        .adv-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+            text-align: center;
+        }
+        .adv-item h4 {
+            font-size: 20px;
+            margin-bottom: 10px;
+            color: var(--primary);
+        }
+        .contacts {
+            background-color: var(--dark);
+            color: white;
+            padding: 60px 0;
+        }
+        .contacts-wrapper {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        .contact-info, .contact-form {
+            flex: 1;
+            min-width: 300px;
+            margin: 15px;
+        }
+        .contact-info h3, .contact-form h3 {
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+        .contact-info p {
+            margin-bottom: 15px;
+            font-size: 16px;
+        }
+        .contact-form input, .contact-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: none;
+            border-radius: 4px;
+        }
+        .contact-form button {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            width: 100%;
+        }
+        .contact-form button:hover {
+            background-color: #d35400;
+        }
+        footer {
+            background-color: #1a252f;
+            color: #bdc3c7;
+            text-align: center;
+            padding: 20px 0;
+            font-size: 14px;
+        }
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+                text-align: center;
+            }
+            nav {
+                margin-top: 15px;
+            }
+            nav a {
+                margin: 0 10px;
+            }
+            .hero h2 {
+                font-size: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1>Вольт<span>Сервіс</span></h1>
+            </div>
+            <nav>
+                <a href="#services">Послуги</a>
+                <a href="#advantages">Переваги</a>
+                <a href="#contacts">Контакти</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container" style="display:block;">
+            <h2>Якісний ремонт стартерів та генераторів</h2>
+            <p>Швидка діагностика, професійне обладнання та гарантія на всі виконані роботи. Повернемо ваш автомобіль до життя за 1 годину!</p>
+            <a href="#contacts" class="btn">Записатися на діагностику</a>
+        </div>
+    </section>
+
+    <section id="services" class="services">
+        <div class="container" style="display:block;">
+            <h2 class="section-title">Наші послуги</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>Ремонт стартерів</h3>
+                    <ul>
+                        <li>Комплексна діагностика на стенді</li>
+                        <li>Заміна бендикса, втягуючого реле</li>
+                        <li>Заміна щіток та щіткових вузлів</li>
+                        <li>Проточка та заміна якоря</li>
+                        <li>Заміна втулок та підшипників</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3>Ремонт генераторів</h3>
+                    <ul>
+                        <li>Перевірка під навантаженням</li>
+                        <li>Заміна реле-регулятора (шоколадки)</li>
+                        <li>Заміна діодного моста</li>
+                        <li>Заміна підшипників та шківів</li>
+                        <li>Перемотування або заміна статора</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3>Зняття та встановлення</h3>
+                    <ul>
+                        <li>Демонтаж агрегату з будь-якого авто</li>
+                        <li>Очищення від бруду та мастила</li>
+                        <li>Фінальне тестування на автомобілі</li>
+                        <li>Власний склад автозапчастин</li>
+                        <li>Швидкий підбір комплектуючих</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="advantages" class="advantages">
+        <div class="container" style="display:block;">
+            <h2 class="section-title">Чому обирають нас</h2>
+            <div class="adv-grid">
+                <div class="adv-item">
+                    <h4>Швидкість</h4>
+                    <p>Ремонт у день звернення. Більшість робіт триває від 45 хвилин до 2 годин.</p>
+                </div>
+                <div class="adv-item">
+                    <h4>Гарантія</h4>
+                    <p>Надаємо офіційну гарантію на замінені деталі та роботу до 6 місяців.</p>
+                </div>
+                <div class="adv-item">
+                    <h4>Досвід</h4>
+                    <p>Майстри з досвідом понад 8 років, які знають специфіку будь-яких марок авто.</p>
+                </div>
+                <div class="adv-item">
+                    <h4>Запчастини</h4>
+                    <p>Усі необхідні комплектуючі (оригінали та аналоги) вже в наявності на складі.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contacts" class="contacts">
+        <div class="container" style="display:block;">
+            <h2 class="section-title" style="color:white;">Контакти та запис</h2>
+            <div class="contacts-wrapper">
+                <div class="contact-info">
+                    <h3>Зв'яжіться з нами</h3>
+                    <p><strong>Адреса:</strong> м. Львів, вул. Автомобільна, 15 (Автокооператив)</p>
+                    <p><strong>Телефон:</strong> +38 (097) 123-45-67</p>
+                    <p><strong>Графік роботи:</strong> Пн-Сб: 09:00 - 18:00, Нд: Вихідний</p>
+                    <p><em>Приймаємо агрегати, надіслані Новою Поштою з інших міст!</em></p>
+                </div>
+                <div class="contact-form">
+                    <h3>Залишити заявку</h3>
+                    <form onsubmit="alert('Дякуємо! Ми зв'яжемося з вами найближчим часом.'); return false;">
+                        <input type="text" placeholder="Ваше ім'я" required>
+                        <input type="tel" placeholder="Номер телефону" required>
+                        <textarea rows="3" placeholder="Який у вас автомобіль або симптом поломки?"></textarea>
+                        <button type="submit">Передзвоніть мені</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 ВольтСервіс. Всі права захищені. Ремонт автомобільних стартерів та генераторів.</p>
+    </footer>
+
+</body>
+</html>
