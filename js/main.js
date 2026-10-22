@@ -1,6 +1,6 @@
 /**
- * BVV · Ремонт стартерів та генераторів у Львові
- * Interactive JavaScript for GitHub Pages
+ * Автоелектрика Львів · Ремонт стартерів та генераторів
+ * Clean Interactive JavaScript for GitHub Pages
  */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -8,9 +8,8 @@ document.addEventListener('DOMContentLoaded', () => {
   initMobileMenu();
   initScheduleStatus();
   initSymptomCards();
-  initBookingForm();
-  initSlideMode();
   initScrollSpy();
+  initBackToTop();
 });
 
 /* ========================================================
@@ -63,9 +62,8 @@ function initScheduleStatus() {
   if (!badge) return;
 
   const updateStatus = () => {
-    // Current time in Ukraine (EET / EEST)
+    // Current time in Ukraine (Europe/Kyiv)
     const now = new Date();
-    // Use Intl for timezone accuracy
     const options = { timeZone: 'Europe/Kyiv', hour: 'numeric', minute: 'numeric', weekday: 'short', hour12: false };
     const formatter = new Intl.DateTimeFormat([], options);
     const parts = formatter.formatToParts(now);
@@ -98,7 +96,7 @@ function initScheduleStatus() {
       }
     } else {
       // Sun: Closed
-      text = 'Сьогодні вихідний · Відкриття в пн о 10:00';
+      text = 'Сьогодні вихідний · Відкриття в Пн о 10:00';
     }
 
     badge.textContent = text;
@@ -114,133 +112,14 @@ function initScheduleStatus() {
    ======================================================== */
 function initSymptomCards() {
   const cards = document.querySelectorAll('.symptom-card');
-  const symptomInput = document.getElementById('form-symptom');
-  const bookingSection = document.getElementById('contacts');
+  const contactsSection = document.getElementById('contacts');
 
   cards.forEach(card => {
     card.addEventListener('click', () => {
-      const title = card.querySelector('.symptom-title')?.textContent || '';
-      if (symptomInput) {
-        symptomInput.value = title.trim();
-        if (bookingSection) {
-          bookingSection.scrollIntoView({ behavior: 'smooth' });
-          setTimeout(() => symptomInput.focus(), 600);
-        }
+      if (contactsSection) {
+        contactsSection.scrollIntoView({ behavior: 'smooth' });
       }
     });
-  });
-}
-
-/* ========================================================
-   Booking Form (Direct WhatsApp / Telegram / Call)
-   ======================================================== */
-function initBookingForm() {
-  const form = document.getElementById('diagnostic-form');
-  if (!form) return;
-
-  form.addEventListener('submit', (e) => {
-    e.preventDefault();
-    const phone = document.getElementById('form-phone')?.value.trim();
-    const name = document.getElementById('form-name')?.value.trim();
-    const symptom = document.getElementById('form-symptom')?.value.trim();
-
-    if (!phone) {
-      alert('Будь ласка, вкажіть ваш номер телефону');
-      return;
-    }
-
-    const message = encodeURIComponent(
-      `Добрий день! Запис на діагностику (стартер/генератор).\nІм'я: ${name || 'Клієнт'}\nТелефон: ${phone}\nСимптом: ${symptom || 'Потрібна перевірка'}`
-    );
-
-    // Provide options to user: Telegram or Viber or Call
-    const choice = confirm(
-      `Дякуємо! Надіслати заявку у Telegram/Viber майстру?\n\nТелефон: ${phone}\nСимптом: ${symptom || 'Перевірка'}\n\nНатисніть OK для переходу або зателефонуйте напряму: +380688379656`
-    );
-
-    if (choice) {
-      // Try opening Telegram or phone
-      window.open(`https://t.me/share/url?url=${encodeURIComponent('+380688379656')}&text=${message}`, '_blank');
-    }
-  });
-}
-
-/* ========================================================
-   Slide Mode / Presentation Mode (16:9 like PDF)
-   ======================================================== */
-function initSlideMode() {
-  const toggleBtn = document.getElementById('toggle-slide-mode');
-  const slides = document.querySelectorAll('.presentation-slide');
-  const controls = document.getElementById('slide-controls');
-  const prevBtn = document.getElementById('slide-prev');
-  const nextBtn = document.getElementById('slide-next');
-  const counter = document.getElementById('slide-counter');
-
-  let currentSlide = 0;
-  let isSlideMode = false;
-
-  const updateSlideView = () => {
-    slides.forEach((s, idx) => {
-      s.classList.toggle('active-slide', idx === currentSlide);
-    });
-    if (counter) {
-      counter.textContent = `${currentSlide + 1} / ${slides.length}`;
-    }
-  };
-
-  const setSlideMode = (enable) => {
-    isSlideMode = enable;
-    document.body.classList.toggle('slide-mode', enable);
-    if (toggleBtn) {
-      toggleBtn.innerHTML = enable 
-        ? `<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg> Вийти зі слайдів`
-        : `<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V5h14v14z"/></svg> Режим слайдів`;
-    }
-    if (enable) {
-      updateSlideView();
-    }
-  };
-
-  if (toggleBtn) {
-    toggleBtn.addEventListener('click', () => {
-      setSlideMode(!isSlideMode);
-    });
-  }
-
-  if (prevBtn) {
-    prevBtn.addEventListener('click', () => {
-      if (currentSlide > 0) {
-        currentSlide--;
-        updateSlideView();
-      }
-    });
-  }
-
-  if (nextBtn) {
-    nextBtn.addEventListener('click', () => {
-      if (currentSlide < slides.length - 1) {
-        currentSlide++;
-        updateSlideView();
-      }
-    });
-  }
-
-  // Keyboard navigation
-  window.addEventListener('keydown', (e) => {
-    if (!isSlideMode) return;
-    if (e.key === 'ArrowRight' || e.key === 'Space') {
-      if (currentSlide < slides.length - 1) {
-        currentSlide++;
-        updateSlideView();
-      }
-    } else if (e.key === 'ArrowLeft') {
-      if (currentSlide > 0) {
-        currentSlide--;
-        updateSlideView();
-      }
-    } else if (e.key === 'Escape') {
-      setSlideMode(false);
-    }
   });
 }
 
@@ -253,7 +132,7 @@ function initScrollSpy() {
 
   const onScroll = () => {
     let current = '';
-    const scrollPos = window.scrollY + 120;
+    const scrollPos = window.scrollY + 140;
 
     sections.forEach(sec => {
       const top = sec.offsetTop;
@@ -273,3 +152,30 @@ function initScrollSpy() {
 
   window.addEventListener('scroll', onScroll, { passive: true });
 }
+
+/* ========================================================
+   Back to Top Button
+   ======================================================== */
+function initBackToTop() {
+  const btn = document.getElementById('back-to-top');
+  if (!btn) return;
+
+  const onScroll = () => {
+    if (window.scrollY > 350) {
+      btn.classList.add('visible');
+    } else {
+      btn.classList.remove('visible');
+    }
+  };
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  btn.addEventListener('click', () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  });
+}
+
