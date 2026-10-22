@@ -1,326 +1,823 @@
 <!DOCTYPE html>
 <html lang="uk">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ремонт стартерів та генераторів | Автосервіс</title>
-    <style>
-        :root {
-            --primary: #e67e22;
-            --dark: #2c3e50;
-            --light: #f8f9fa;
-            --text: #333;
-        }
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-        body {
-            color: var(--text);
-            background-color: var(--light);
-            line-height: 1.6;
-        }
-        header {
-            background-color: var(--dark);
-            color: white;
-            padding: 20px 0;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-        }
-        .container {
-            width: 90%;
-            max-width: 1100px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .logo h1 {
-            font-size: 24px;
-            color: var(--primary);
-        }
-        .logo span {
-            color: white;
-        }
-        nav a {
-            color: white;
-            text-decoration: none;
-            margin-left: 20px;
-            font-weight: 600;
-            transition: color 0.3s;
-        }
-        nav a:hover {
-            color: var(--primary);
-        }
-        .hero {
-            background: linear-gradient(rgba(44, 62, 80, 0.85), rgba(44, 62, 80, 0.85)), url('https://images.unsplash.com/photo-1486006920555-c77dce18193b?auto=format&fit=crop&w=1200&q=80') no-repeat center center/cover;
-            color: white;
-            padding: 100px 0;
-            text-align: center;
-        }
-        .hero h2 {
-            font-size: 42px;
-            margin-bottom: 20px;
-        }
-        .hero p {
-            font-size: 18px;
-            margin-bottom: 30px;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        .btn {
-            display: inline-block;
-            background-color: var(--primary);
-            color: white;
-            padding: 12px 30px;
-            text-decoration: none;
-            border-radius: 5px;
-            font-weight: bold;
-            transition: background 0.3s;
-        }
-        .btn:hover {
-            background-color: #d35400;
-        }
-        .services {
-            padding: 60px 0;
-            background: white;
-        }
-        .section-title {
-            text-align: center;
-            font-size: 32px;
-            margin-bottom: 40px;
-            color: var(--dark);
-        }
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, min-mix(300px, 1fr));
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
-        .card {
-            background: var(--light);
-            padding: 30px;
-            border-radius: 8px;
-            border-top: 5px solid var(--primary);
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-        }
-        .card h3 {
-            margin-bottom: 15px;
-            color: var(--dark);
-        }
-        .card ul {
-            list-style-type: none;
-        }
-        .card ul li {
-            margin-bottom: 8px;
-            position: relative;
-            padding-left: 20px;
-        }
-        .card ul li::before {
-            content: "✓";
-            color: var(--primary);
-            position: absolute;
-            left: 0;
-            font-weight: bold;
-        }
-        .advantages {
-            padding: 60px 0;
-        }
-        .adv-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 20px;
-            text-align: center;
-        }
-        .adv-item h4 {
-            font-size: 20px;
-            margin-bottom: 10px;
-            color: var(--primary);
-        }
-        .contacts {
-            background-color: var(--dark);
-            color: white;
-            padding: 60px 0;
-        }
-        .contacts-wrapper {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-        }
-        .contact-info, .contact-form {
-            flex: 1;
-            min-width: 300px;
-            margin: 15px;
-        }
-        .contact-info h3, .contact-form h3 {
-            margin-bottom: 20px;
-            color: var(--primary);
-        }
-        .contact-info p {
-            margin-bottom: 15px;
-            font-size: 16px;
-        }
-        .contact-form input, .contact-form textarea {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 15px;
-            border: none;
-            border-radius: 4px;
-        }
-        .contact-form button {
-            background-color: var(--primary);
-            color: white;
-            border: none;
-            padding: 12px 25px;
-            border-radius: 4px;
-            cursor: pointer;
-            font-weight: bold;
-            width: 100%;
-        }
-        .contact-form button:hover {
-            background-color: #d35400;
-        }
-        footer {
-            background-color: #1a252f;
-            color: #bdc3c7;
-            text-align: center;
-            padding: 20px 0;
-            font-size: 14px;
-        }
-        @media (max-width: 768px) {
-            .container {
-                flex-direction: column;
-                text-align: center;
-            }
-            nav {
-                margin-top: 15px;
-            }
-            nav a {
-                margin: 0 10px;
-            }
-            .hero h2 {
-                font-size: 30px;
-            }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ремонт стартерів та генераторів у Львові | вул. Зелена, 251</title>
+  
+  <meta name="description" content="Професійний ремонт та точна діагностика стартерів і генераторів у Львові. Вул. Зелена, 251. Надійний запуск і стабільне живлення без зайвих витрат. Тел: +380688379656">
+  <meta name="keywords" content="ремонт стартерів львів, ремонт генераторів львів, діагностика стартера, заміна щіток, бендикс, втягувальне реле, діодний міст, реле напруги львів">
+  <meta name="author" content="BVV Сервіс Львів">
+
+  <!-- Open Graph / Social Media -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Ремонт стартерів та генераторів у Львові">
+  <meta property="og:description" content="Надійний запуск і стабільне живлення без зайвих витрат. Вул. Зелена, 251. Тел: +380 68 837 96 56">
+  <meta property="og:image" content="images/hero-alternator.jpg">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- Schema.org Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "AutoRepair",
+    "name": "Ремонт стартерів та генераторів у Львові",
+    "description": "Професійний ремонт та діагностика стартерів і генераторів легкових та вантажних авто.",
+    "telephone": "+380688379656",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "вулиця Зелена, 251",
+      "addressLocality": "Львів",
+      "addressCountry": "UA"
+    },
+    "openingHoursSpecification": [
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+        "opens": "10:00",
+        "closes": "18:00"
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Saturday"],
+        "opens": "10:00",
+        "closes": "14:00"
+      }
+    ],
+    "priceRange": "$$"
+  }
+  </script>
 </head>
 <body>
 
-    <header>
-        <div class="container">
-            <div class="logo">
-                <h1>Вольт<span>Сервіс</span></h1>
-            </div>
-            <nav>
-                <a href="#services">Послуги</a>
-                <a href="#advantages">Переваги</a>
-                <a href="#contacts">Контакти</a>
-            </nav>
+  <!-- ========================================================
+       Header & Navigation
+       ======================================================== -->
+  <header class="site-header" id="top">
+    <div class="container header-inner">
+      <a href="#top" class="brand-logo" aria-label="Головна">
+        <div class="brand-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
         </div>
-    </header>
+        <div class="brand-text">
+          <span class="brand-title">BVV Сервіс</span>
+          <span class="brand-subtitle">Автоелектрика · Львів</span>
+        </div>
+      </a>
 
-    <section class="hero">
-        <div class="container" style="display:block;">
-            <h2>Якісний ремонт стартерів та генераторів</h2>
-            <p>Швидка діагностика, професійне обладнання та гарантія на всі виконані роботи. Повернемо ваш автомобіль до життя за 1 годину!</p>
-            <a href="#contacts" class="btn">Записатися на діагностику</a>
+      <!-- Desktop Navigation Links -->
+      <nav class="main-nav" aria-label="Основна навігація">
+        <a href="#symptoms" class="nav-link">Симптоми</a>
+        <a href="#diagnostics" class="nav-link">Діагностика</a>
+        <a href="#starters" class="nav-link">Стартери</a>
+        <a href="#alternators" class="nav-link">Генератори</a>
+        <a href="#rational" class="nav-link">Ремонт/Заміна</a>
+        <a href="#results" class="nav-link">Результат</a>
+        <a href="#contacts" class="nav-link">Контакти</a>
+      </nav>
+
+      <!-- Header Action Buttons -->
+      <div class="header-actions">
+        <button id="toggle-slide-mode" class="mode-toggle-btn" title="Перемкнути у 16:9 слайдовий режим як у PDF">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V5h14v14z"/></svg>
+          Режим слайдів
+        </button>
+
+        <a href="tel:+380688379656" class="phone-btn" title="Подзвонити на сервіс">
+          <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+          <span>+380 68 837 96 56</span>
+        </a>
+
+        <button class="mobile-menu-btn" aria-label="Відкрити меню" aria-expanded="false">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer Menu -->
+  <div class="mobile-drawer" aria-label="Мобільне меню">
+    <a href="#symptoms" class="mobile-nav-link">Перші симптоми</a>
+    <a href="#diagnostics" class="mobile-nav-link">Діагностика</a>
+    <a href="#starters" class="mobile-nav-link">Ремонт стартерів</a>
+    <a href="#alternators" class="mobile-nav-link">Відновлення генераторів</a>
+    <a href="#rational" class="mobile-nav-link">Ремонт чи заміна</a>
+    <a href="#results" class="mobile-nav-link">Що отримує клієнт</a>
+    <a href="#contacts" class="mobile-nav-link">Контакти та запис</a>
+    <a href="tel:+380688379656" class="phone-btn" style="margin-top: 1rem; justify-content: center;">
+      <svg viewBox="0 0 24 24" style="width: 18px; height: 18px; fill: currentColor;"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+      Подзвонити зараз
+    </a>
+  </div>
+
+  <!-- Wrapper for Presentation Slide Mode & Landing Page Flow -->
+  <main class="slides-wrapper">
+
+    <!-- ========================================================
+         SLIDE 1: Hero Section
+         ======================================================== -->
+    <section class="hero-section presentation-slide active-slide" id="hero" data-slide="1">
+      <div class="container">
+        <div class="hero-grid">
+          <div class="hero-content">
+            <div class="hero-badge-row">
+              <span class="kicker" style="margin-bottom: 0;">АВТОЕЛЕКТРИКА · ЛЬВІВ</span>
+              <span class="live-indicator">
+                <span class="pulse-dot"></span>
+                Вул. Зелена, 251
+              </span>
+            </div>
+
+            <h1 class="hero-title">
+              <span>Ремонт</span>
+              <span>стартерів</span>
+              <span>та</span>
+              <span>генераторів</span>
+              <span style="color: var(--primary-teal);">у Львові</span>
+            </h1>
+
+            <p class="hero-subtitle">
+              Надійний запуск і стабільне живлення без зайвих витрат.
+            </p>
+
+            <div class="hero-cta-group">
+              <a href="#contacts" class="btn-primary">
+                Записатися на діагностику
+              </a>
+              <a href="tel:+380688379656" class="btn-secondary">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+                +380 68 837 96 56
+              </a>
+            </div>
+
+            <div class="hero-pills">
+              <div class="pill-item">
+                <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                м. Львів, вул. Зелена, 251
+              </div>
+              <div class="pill-item">
+                <svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg>
+                Пн-Пт 10:00–18:00, Сб 10:00–14:00
+              </div>
+              <div class="pill-item">
+                <svg viewBox="0 0 24 24"><path d="M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z"/></svg>
+                Швидка дефектовка
+              </div>
+            </div>
+          </div>
+
+          <div class="hero-visual">
+            <div class="hero-image-frame">
+              <img src="images/hero-alternator.jpg" alt="Генератор та стартер автомобіля в розрізі" loading="eager" width="800" height="450">
+            </div>
+          </div>
         </div>
+      </div>
     </section>
 
-    <section id="services" class="services">
-        <div class="container" style="display:block;">
-            <h2 class="section-title">Наші послуги</h2>
-            <div class="grid">
-                <div class="card">
-                    <h3>Ремонт стартерів</h3>
-                    <ul>
-                        <li>Комплексна діагностика на стенді</li>
-                        <li>Заміна бендикса, втягуючого реле</li>
-                        <li>Заміна щіток та щіткових вузлів</li>
-                        <li>Проточка та заміна якоря</li>
-                        <li>Заміна втулок та підшипників</li>
-                    </ul>
+    <!-- ========================================================
+         SLIDE 2: Early Symptoms
+         ======================================================== -->
+    <section class="symptoms-section presentation-slide" id="symptoms" data-slide="2">
+      <div class="container">
+        <span class="kicker">ПЕРШІ СИМПТОМИ</span>
+        <h2 class="section-title">Коли проблема починається з одного запуску</h2>
+        <p class="section-desc">Помітьте симптоми до того, як авто не запуститься.</p>
+
+        <div class="symptoms-grid">
+          <div class="symptoms-list">
+            <!-- Symptom 1 -->
+            <div class="symptom-card card" title="Натисніть, щоб обрати цей симптом для діагностики">
+              <div class="symptom-card-header">
+                <div class="icon-circle">
+                  <img src="images/icons/symptom-car.png" alt="Двигун запускається через раз">
                 </div>
-                <div class="card">
-                    <h3>Ремонт генераторів</h3>
-                    <ul>
-                        <li>Перевірка під навантаженням</li>
-                        <li>Заміна реле-регулятора (шоколадки)</li>
-                        <li>Заміна діодного моста</li>
-                        <li>Заміна підшипників та шківів</li>
-                        <li>Перемотування або заміна статора</li>
-                    </ul>
-                </div>
-                <div class="card">
-                    <h3>Зняття та встановлення</h3>
-                    <ul>
-                        <li>Демонтаж агрегату з будь-якого авто</li>
-                        <li>Очищення від бруду та мастила</li>
-                        <li>Фінальне тестування на автомобілі</li>
-                        <li>Власний склад автозапчастин</li>
-                        <li>Швидкий підбір комплектуючих</li>
-                    </ul>
-                </div>
+                <h3 class="symptom-title">Двигун запускається через раз</h3>
+              </div>
+              <p class="symptom-desc">Часто потрібна повторна спроба.</p>
             </div>
+
+            <!-- Symptom 2 -->
+            <div class="symptom-card card" title="Натисніть, щоб обрати цей симптом для діагностики">
+              <div class="symptom-card-header">
+                <div class="icon-circle">
+                  <img src="images/icons/symptom-starter.png" alt="Стартер клацає">
+                </div>
+                <h3 class="symptom-title">Стартер клацає</h3>
+              </div>
+              <p class="symptom-desc">Колінчастий вал не обертається.</p>
+            </div>
+
+            <!-- Symptom 3 -->
+            <div class="symptom-card card" title="Натисніть, щоб обрати цей симптом для діагностики">
+              <div class="symptom-card-header">
+                <div class="icon-circle">
+                  <img src="images/icons/symptom-battery.png" alt="Акумулятор швидко розряджається">
+                </div>
+                <h3 class="symptom-title">Акумулятор швидко розряджається</h3>
+              </div>
+              <p class="symptom-desc">Можлива причина — система заряджання.</p>
+            </div>
+
+            <!-- Symptom 4 -->
+            <div class="symptom-card card" title="Натисніть, щоб обрати цей симптом для діагностики">
+              <div class="symptom-card-header">
+                <div class="icon-circle">
+                  <img src="images/icons/symptom-alert.png" alt="Загоряється індикатор">
+                </div>
+                <h3 class="symptom-title">Загоряється індикатор</h3>
+              </div>
+              <p class="symptom-desc">Потрібна перевірка системи живлення.</p>
+            </div>
+          </div>
+
+          <div class="symptoms-media">
+            <img src="images/symptoms-indicator.jpg" alt="Індикатор заряду та запуск авто на панелі приладів" loading="lazy" width="600" height="700">
+          </div>
         </div>
+      </div>
     </section>
 
-    <section id="advantages" class="advantages">
-        <div class="container" style="display:block;">
-            <h2 class="section-title">Чому обирають нас</h2>
-            <div class="adv-grid">
-                <div class="adv-item">
-                    <h4>Швидкість</h4>
-                    <p>Ремонт у день звернення. Більшість робіт триває від 45 хвилин до 2 годин.</p>
-                </div>
-                <div class="adv-item">
-                    <h4>Гарантія</h4>
-                    <p>Надаємо офіційну гарантію на замінені деталі та роботу до 6 місяців.</p>
-                </div>
-                <div class="adv-item">
-                    <h4>Досвід</h4>
-                    <p>Майстри з досвідом понад 8 років, які знають специфіку будь-яких марок авто.</p>
-                </div>
-                <div class="adv-item">
-                    <h4>Запчастини</h4>
-                    <p>Усі необхідні комплектуючі (оригінали та аналоги) вже в наявності на складі.</p>
-                </div>
-            </div>
+    <!-- ========================================================
+         SLIDE 3: Diagnostics Process
+         ======================================================== -->
+    <section class="diagnostics-section presentation-slide" id="diagnostics" data-slide="3">
+      <div class="container">
+        <span class="kicker">ПЕРЕД РОЗБИРАННЯМ</span>
+        <h2 class="section-title">Діагностика перед ремонтом</h2>
+        <p class="section-desc">Спочатку знаходимо причину. Потім погоджуємо рішення, а не міняємо деталі навмання.</p>
+
+        <div class="steps-grid">
+          <!-- Step 01 -->
+          <div class="step-card">
+            <div class="step-card-bar"></div>
+            <div class="step-badge">01</div>
+            <h3 class="step-title">Огляд вузла</h3>
+            <p class="step-desc">Перевіряємо корпус, кріплення, контакти та сліди зносу.</p>
+          </div>
+
+          <!-- Step 02 -->
+          <div class="step-card">
+            <div class="step-card-bar"></div>
+            <div class="step-badge">02</div>
+            <h3 class="step-title">Тест електричної частини</h3>
+            <p class="step-desc">Перевіряємо запуск, заряджання, опір і роботу основних елементів.</p>
+          </div>
+
+          <!-- Step 03 -->
+          <div class="step-card">
+            <div class="step-card-bar"></div>
+            <div class="step-badge">03</div>
+            <h3 class="step-title">Пошук причини</h3>
+            <p class="step-desc">Відокремлюємо несправність вузла від проблем проводки чи акумулятора.</p>
+          </div>
+
+          <!-- Step 04 -->
+          <div class="step-card">
+            <div class="step-card-bar"></div>
+            <div class="step-badge">04</div>
+            <h3 class="step-title">Погодження рішення</h3>
+            <p class="step-desc">Пояснюємо стан деталей і погоджуємо обсяг робіт із клієнтом.</p>
+          </div>
         </div>
+      </div>
     </section>
 
-    <section id="contacts" class="contacts">
-        <div class="container" style="display:block;">
-            <h2 class="section-title" style="color:white;">Контакти та запис</h2>
-            <div class="contacts-wrapper">
-                <div class="contact-info">
-                    <h3>Зв'яжіться з нами</h3>
-                    <p><strong>Адреса:</strong> м. Львів, вул. Автомобільна, 15 (Автокооператив)</p>
-                    <p><strong>Телефон:</strong> +38 (097) 123-45-67</p>
-                    <p><strong>Графік роботи:</strong> Пн-Сб: 09:00 - 18:00, Нд: Вихідний</p>
-                    <p><em>Приймаємо агрегати, надіслані Новою Поштою з інших міст!</em></p>
-                </div>
-                <div class="contact-form">
-                    <h3>Залишити заявку</h3>
-                    <form onsubmit="alert('Дякуємо! Ми зв'яжемося з вами найближчим часом.'); return false;">
-                        <input type="text" placeholder="Ваше ім'я" required>
-                        <input type="tel" placeholder="Номер телефону" required>
-                        <textarea rows="3" placeholder="Який у вас автомобіль або симптом поломки?"></textarea>
-                        <button type="submit">Передзвоніть мені</button>
-                    </form>
-                </div>
+    <!-- ========================================================
+         SLIDE 4: Starter Repair
+         ======================================================== -->
+    <section class="service-section presentation-slide" id="starters" data-slide="4">
+      <div class="container">
+        <span class="kicker">СТАРТЕР</span>
+        <h2 class="section-title">Ремонтуємо стартери</h2>
+        <p class="section-desc">Перевіряємо вузол по частинах і замінюємо лише те, що справді втратило ресурс.</p>
+
+        <div class="parts-grid-6">
+          <!-- Part 1 -->
+          <div class="part-card card">
+            <div class="part-card-top">
+              <div class="icon-circle">
+                <img src="images/icons/part-brushes.png" alt="Щітки стартера">
+              </div>
+              <h3 class="part-title">Щітки</h3>
             </div>
+            <p class="part-desc">Перевіряємо знос і контакт із колектором.</p>
+          </div>
+
+          <!-- Part 2 -->
+          <div class="part-card card">
+            <div class="part-card-top">
+              <div class="icon-circle">
+                <img src="images/icons/part-bushings.png" alt="Втулки стартера">
+              </div>
+              <h3 class="part-title">Втулки</h3>
+            </div>
+            <p class="part-desc">Оцінюємо люфт і плавність обертання.</p>
+          </div>
+
+          <!-- Part 3 -->
+          <div class="part-card card">
+            <div class="part-card-top">
+              <div class="icon-circle">
+                <img src="images/icons/part-solenoid.png" alt="Втягувальне реле стартера">
+              </div>
+              <h3 class="part-title">Втягувальне реле</h3>
+            </div>
+            <p class="part-desc">Перевіряємо подачу струму та спрацьовування.</p>
+          </div>
+
+          <!-- Part 4 -->
+          <div class="part-card card">
+            <div class="part-card-top">
+              <div class="icon-circle">
+                <img src="images/icons/part-bendix.png" alt="Бендикс стартера">
+              </div>
+              <h3 class="part-title">Бендикс</h3>
+            </div>
+            <p class="part-desc">Перевіряємо зачеплення та вільний хід.</p>
+          </div>
+
+          <!-- Part 5 -->
+          <div class="part-card card">
+            <div class="part-card-top">
+              <div class="icon-circle">
+                <img src="images/icons/part-collector.png" alt="Колектор стартера">
+              </div>
+              <h3 class="part-title">Колектор</h3>
+            </div>
+            <p class="part-desc">Оглядаємо поверхню та стан контактів.</p>
+          </div>
+
+          <!-- Part 6 -->
+          <div class="part-card card">
+            <div class="part-card-top">
+              <div class="icon-circle">
+                <img src="images/icons/part-contacts.png" alt="Контакти стартера">
+              </div>
+              <h3 class="part-title">Контакти</h3>
+            </div>
+            <p class="part-desc">Очищаємо, відновлюємо або замінюємо зношені з'єднання.</p>
+          </div>
         </div>
+      </div>
     </section>
 
-    <footer>
-        <p>&copy; 2026 ВольтСервіс. Всі права захищені. Ремонт автомобільних стартерів та генераторів.</p>
-    </footer>
+    <!-- ========================================================
+         SLIDE 5: Alternator Repair
+         ======================================================== -->
+    <section class="service-section alt-bg presentation-slide" id="alternators" data-slide="5">
+      <div class="container">
+        <span class="kicker">ГЕНЕРАТОР</span>
+        <h2 class="section-title">Відновлюємо генератори</h2>
+        <p class="section-desc">Мета ремонту — повернути стабільне заряджання та зрозуміти, який елемент його порушує.</p>
 
+        <div class="parts-grid-6">
+          <!-- Alt Part 1 -->
+          <div class="part-card card">
+            <div class="part-card-top">
+              <div class="icon-circle">
+                <img src="images/icons/part-charging.png" alt="Заряджання генератора">
+              </div>
+              <h3 class="part-title">Заряджання</h3>
+            </div>
+            <p class="part-desc">Перевіряємо, чи отримує акумулятор потрібне живлення.</p>
+          </div>
+
+          <!-- Alt Part 2 -->
+          <div class="part-card card">
+            <div class="part-card-top">
+              <div class="icon-circle">
+                <img src="images/icons/part-voltage-reg.png" alt="Регулятор напруги генератора">
+              </div>
+              <h3 class="part-title">Регулятор напруги</h3>
+            </div>
+            <p class="part-desc">Виявляємо нестабільну або неправильну напругу.</p>
+          </div>
+
+          <!-- Alt Part 3 -->
+          <div class="part-card card">
+            <div class="part-card-top">
+              <div class="icon-circle">
+                <img src="images/icons/part-diode-bridge.png" alt="Діодний міст генератора">
+              </div>
+              <h3 class="part-title">Діодний міст</h3>
+            </div>
+            <p class="part-desc">Перевіряємо випрямлення струму.</p>
+          </div>
+
+          <!-- Alt Part 4 -->
+          <div class="part-card card">
+            <div class="part-card-top">
+              <div class="icon-circle">
+                <img src="images/icons/part-bearings.png" alt="Підшипники генератора">
+              </div>
+              <h3 class="part-title">Підшипники</h3>
+            </div>
+            <p class="part-desc">Оцінюємо шум, люфт і плавність роботи.</p>
+          </div>
+
+          <!-- Alt Part 5 -->
+          <div class="part-card card">
+            <div class="part-card-top">
+              <div class="icon-circle">
+                <img src="images/icons/part-brushes-alt.png" alt="Щітки генератора">
+              </div>
+              <h3 class="part-title">Щітки</h3>
+            </div>
+            <p class="part-desc">Перевіряємо контакт і залишковий ресурс.</p>
+          </div>
+
+          <!-- Alt Part 6 -->
+          <div class="part-card card">
+            <div class="part-card-top">
+              <div class="icon-circle">
+                <img src="images/icons/part-slip-rings.png" alt="Контактні кільця генератора">
+              </div>
+              <h3 class="part-title">Контактні кільця</h3>
+            </div>
+            <p class="part-desc">Оглядаємо поверхню та стан робочої пари.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================
+         SLIDE 6: Rational Choice: Repair vs Replace
+         ======================================================== -->
+    <section class="decision-section presentation-slide" id="rational" data-slide="6">
+      <div class="container">
+        <span class="kicker">РІШЕННЯ ПІСЛЯ ДІАГНОСТИКИ</span>
+        <h2 class="section-title">Ремонт чи заміна: обираємо раціонально</h2>
+        <p class="section-desc">Рекомендація залежить від стану вузла, а не від шаблонного сценарію.</p>
+
+        <!-- Desktop Comparison Table -->
+        <div class="decision-table-wrapper">
+          <table class="decision-table">
+            <thead>
+              <tr>
+                <th>Критерій</th>
+                <th>Що оцінюємо</th>
+                <th>Ремонт</th>
+                <th>Заміна</th>
+                <th>Рекомендація</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="criterion-cell">Стан вузла</td>
+                <td class="assess-cell">Знос деталей і можливість відновлення</td>
+                <td class="repair-cell">Корпус і основа придатні</td>
+                <td class="replace-cell">Є суттєве пошкодження</td>
+                <td class="recommend-cell">Зберігаємо рідний вузол</td>
+              </tr>
+              <tr>
+                <td class="criterion-cell">Вартість</td>
+                <td class="assess-cell">Обсяг робіт і деталі</td>
+                <td class="repair-cell">Заміна окремих деталей</td>
+                <td class="replace-cell">Потрібен інший вузол</td>
+                <td class="recommend-cell">Погоджуємо до ремонту</td>
+              </tr>
+              <tr>
+                <td class="criterion-cell">Ресурс</td>
+                <td class="assess-cell">Очікувана надійність рішення</td>
+                <td class="repair-cell">Зношені частини відновлені</td>
+                <td class="replace-cell">Встановлюється інший вузол</td>
+                <td class="recommend-cell">Обираємо за станом</td>
+              </tr>
+              <tr>
+                <td class="criterion-cell">Терміновість</td>
+                <td class="assess-cell">Що важливіше зараз для клієнта</td>
+                <td class="repair-cell">Підходить, якщо вузол можна відновити швидко</td>
+                <td class="replace-cell">Доцільна, якщо ремонт нераціональний</td>
+                <td class="recommend-cell">Без зайвих витрат</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Mobile Responsive Cards -->
+        <div class="decision-mobile-cards">
+          <!-- Mobile Card 1 -->
+          <div class="decision-mobile-card">
+            <div class="dmc-header">
+              <span class="dmc-criterion">Стан вузла</span>
+              <span class="dmc-recommend">Зберігаємо рідний вузол</span>
+            </div>
+            <div class="dmc-row">
+              <div class="dmc-label">Що оцінюємо:</div>
+              <div>Знос деталей і можливість відновлення</div>
+            </div>
+            <div class="dmc-row">
+              <div class="dmc-label">Ремонт:</div>
+              <div>Корпус і основа придатні</div>
+            </div>
+            <div class="dmc-row">
+              <div class="dmc-label">Заміна:</div>
+              <div>Є суттєве пошкодження</div>
+            </div>
+          </div>
+
+          <!-- Mobile Card 2 -->
+          <div class="decision-mobile-card">
+            <div class="dmc-header">
+              <span class="dmc-criterion">Вартість</span>
+              <span class="dmc-recommend">Погоджуємо до ремонту</span>
+            </div>
+            <div class="dmc-row">
+              <div class="dmc-label">Що оцінюємо:</div>
+              <div>Обсяг робіт і деталі</div>
+            </div>
+            <div class="dmc-row">
+              <div class="dmc-label">Ремонт:</div>
+              <div>Заміна окремих деталей</div>
+            </div>
+            <div class="dmc-row">
+              <div class="dmc-label">Заміна:</div>
+              <div>Потрібен інший вузол</div>
+            </div>
+          </div>
+
+          <!-- Mobile Card 3 -->
+          <div class="decision-mobile-card">
+            <div class="dmc-header">
+              <span class="dmc-criterion">Ресурс</span>
+              <span class="dmc-recommend">Обираємо за станом</span>
+            </div>
+            <div class="dmc-row">
+              <div class="dmc-label">Що оцінюємо:</div>
+              <div>Очікувана надійність рішення</div>
+            </div>
+            <div class="dmc-row">
+              <div class="dmc-label">Ремонт:</div>
+              <div>Зношені частини відновлені</div>
+            </div>
+            <div class="dmc-row">
+              <div class="dmc-label">Заміна:</div>
+              <div>Встановлюється інший вузол</div>
+            </div>
+          </div>
+
+          <!-- Mobile Card 4 -->
+          <div class="decision-mobile-card">
+            <div class="dmc-header">
+              <span class="dmc-criterion">Терміновість</span>
+              <span class="dmc-recommend">Без зайвих витрат</span>
+            </div>
+            <div class="dmc-row">
+              <div class="dmc-label">Що оцінюємо:</div>
+              <div>Що важливіше зараз для клієнта</div>
+            </div>
+            <div class="dmc-row">
+              <div class="dmc-label">Ремонт:</div>
+              <div>Підходить, якщо вузол можна відновити швидко</div>
+            </div>
+            <div class="dmc-row">
+              <div class="dmc-label">Заміна:</div>
+              <div>Доцільна, якщо ремонт нераціональний</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ========================================================
+         SLIDE 7: Client Benefits & Results
+         ======================================================== -->
+    <section class="results-section presentation-slide" id="results" data-slide="7">
+      <div class="container">
+        <span class="kicker">РЕЗУЛЬТАТ ДЛЯ КЛІЄНТА</span>
+        <h2 class="section-title">Що отримує клієнт</h2>
+        <p class="section-desc">Зрозумілий процес від першої перевірки до рекомендацій після ремонту.</p>
+
+        <div class="results-grid">
+          <div class="results-list">
+            <!-- Result 01 -->
+            <div class="result-item">
+              <div class="result-badge">01</div>
+              <div class="result-text">
+                <h3 class="result-title">Чіткий висновок після діагностики</h3>
+                <p class="result-desc">Ви розумієте, що саме несправне і чому.</p>
+              </div>
+            </div>
+
+            <!-- Result 02 -->
+            <div class="result-item">
+              <div class="result-badge">02</div>
+              <div class="result-text">
+                <h3 class="result-title">Погоджений обсяг робіт</h3>
+                <p class="result-desc">Рішення приймається до початку ремонту.</p>
+              </div>
+            </div>
+
+            <!-- Result 03 -->
+            <div class="result-item">
+              <div class="result-badge">03</div>
+              <div class="result-text">
+                <h3 class="result-title">Акуратне відновлення вузла</h3>
+                <p class="result-desc">Працюємо з конкретними деталями стартера або генератора.</p>
+              </div>
+            </div>
+
+            <!-- Result 04 -->
+            <div class="result-item">
+              <div class="result-badge">04</div>
+              <div class="result-text">
+                <h3 class="result-title">Рекомендації щодо експлуатації</h3>
+                <p class="result-desc">Пояснюємо, на що звернути увагу далі.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="results-media">
+            <img src="images/service-results.jpg" alt="Відремонтований генератор та робочі інструменти майстра" loading="lazy" width="600" height="700">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================
+         SLIDE 8: Booking & Contacts
+         ======================================================== -->
+    <section class="contacts-section presentation-slide" id="contacts" data-slide="8" style="background-image: url('images/contacts-bg.jpg');">
+      <div class="container">
+        <div class="contacts-container">
+          
+          <!-- Left White Card -->
+          <div class="contact-card-white">
+            <span class="kicker">НАСТУПНИЙ КРОК</span>
+            <h2 class="section-title">Запишіться на діагностику у Львові</h2>
+            <p class="section-desc">
+              Опишіть симптом або привезіть автомобіль на перевірку. Після діагностики ви отримаєте зрозуміле рішення щодо ремонту.
+            </p>
+
+            <div class="contact-details-list">
+              <!-- Phone -->
+              <div class="contact-detail-row">
+                <div class="contact-icon-box">
+                  <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+                </div>
+                <div class="contact-detail-content">
+                  <span class="contact-label">Телефон:</span>
+                  <span class="contact-value">
+                    <a href="tel:+380688379656">+380688379656</a>
+                  </span>
+                </div>
+              </div>
+
+              <!-- Address -->
+              <div class="contact-detail-row">
+                <div class="contact-icon-box">
+                  <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                </div>
+                <div class="contact-detail-content">
+                  <span class="contact-label">Адреса:</span>
+                  <span class="contact-value">
+                    <a href="https://maps.google.com/?q=Львів,+вулиця+Зелена,+251" target="_blank" rel="noopener">
+                      місто Львів, вулиця Зелена, 251
+                    </a>
+                  </span>
+                </div>
+              </div>
+
+              <!-- Schedule -->
+              <div class="contact-detail-row">
+                <div class="contact-icon-box">
+                  <svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg>
+                </div>
+                <div class="contact-detail-content">
+                  <span class="contact-label">Графік:</span>
+                  <span class="contact-value" style="font-size: 1rem; font-weight: 600;">
+                    пн–пт з 10:00 до 18:00;<br>
+                    сб з 10:00 до 14:00;<br>
+                    нд — вихідний
+                  </span>
+                  <div>
+                    <span id="live-schedule-badge" class="schedule-badge schedule-open">Перевірка статусу...</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Quick Messengers Row -->
+            <div class="messengers-bar">
+              <a href="tel:+380688379656" class="messenger-btn messenger-phone">
+                <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+                Зателефонувати
+              </a>
+              <a href="https://t.me/+380688379656" target="_blank" rel="noopener" class="messenger-btn messenger-telegram">
+                <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.75-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z"/></svg>
+                Telegram
+              </a>
+              <a href="viber://chat?number=%2B380688379656" class="messenger-btn messenger-viber">
+                <svg viewBox="0 0 24 24"><path d="M17.5 12a5.5 5.5 0 00-5.5-5.5m5.5 2.75a2.75 2.75 0 00-2.75-2.75M19 16.5c-.8.8-2 1.4-3.5 1-2.5-.7-5.3-3.5-6-6-.4-1.5.2-2.7 1-3.5l1.5 1.5-1 1c.5 1 1.5 2 2.5 2.5l1-1 2.5 2.5z"/></svg>
+                Viber
+              </a>
+            </div>
+          </div>
+
+          <!-- Right Interactive Inquiry Card -->
+          <div class="booking-form-card">
+            <h3>Швидкий запис на сервіс</h3>
+            <p>Залиште контакти, і майстер зв'яжеться з вами для уточнення зручного часу або надасть консультацію.</p>
+
+            <form id="diagnostic-form">
+              <div class="form-group">
+                <label for="form-name" class="form-label">Ваше ім'я (необов'язково)</label>
+                <input type="text" id="form-name" class="form-control" placeholder="Наприклад, Олександр">
+              </div>
+
+              <div class="form-group">
+                <label for="form-phone" class="form-label">Номер телефону *</label>
+                <input type="tel" id="form-phone" class="form-control" placeholder="+38 (0__) ___-__-__" required>
+              </div>
+
+              <div class="form-group">
+                <label for="form-symptom" class="form-label">Опишіть симптом або проблему</label>
+                <input type="text" id="form-symptom" class="form-control" placeholder="Клацає стартер, світиться акумулятор...">
+              </div>
+
+              <button type="submit" class="form-submit-btn">
+                Записатися на діагностику
+              </button>
+            </form>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ========================================================
+       Slide Presentation Mode Navigation Toolbar
+       ======================================================== -->
+  <div class="slide-controls" id="slide-controls">
+    <button class="slide-nav-btn" id="slide-prev" title="Попередній слайд (Стрілка вліво)">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
+    </button>
+    <div class="slide-counter" id="slide-counter">1 / 8</div>
+    <button class="slide-nav-btn" id="slide-next" title="Наступний слайд (Стрілка вправо / Пробіл)">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>
+    </button>
+  </div>
+
+  <!-- ========================================================
+       Footer
+       ======================================================== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div>
+          <div class="brand-title" style="color: #FFFFFF; font-size: 1.2rem; margin-bottom: 0.35rem;">
+            BVV Сервіс · Львів
+          </div>
+          <div class="footer-copy">
+            Професійний ремонт стартерів та генераторів. м. Львів, вул. Зелена, 251.
+          </div>
+        </div>
+
+        <nav class="footer-nav" aria-label="Посилання футера">
+          <a href="#hero">Вгору</a>
+          <a href="#symptoms">Симптоми</a>
+          <a href="#diagnostics">Діагностика</a>
+          <a href="#starters">Стартери</a>
+          <a href="#alternators">Генератори</a>
+          <a href="#contacts">Контакти</a>
+        </nav>
+      </div>
+
+      <div class="footer-bottom">
+        <span>© 2026 BVV Сервіс. Усі права захищено.</span>
+        <span>Тел: <a href="tel:+380688379656" style="color: #FFFFFF;">+380 68 837 96 56</a></span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ========================================================
+       Floating Mobile Quick Action Bar
+       ======================================================== -->
+  <div class="floating-mobile-bar" aria-label="Швидкий виклик">
+    <a href="tel:+380688379656" class="fmb-call-btn">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+      Подзвонити майстру
+    </a>
+    <a href="https://maps.google.com/?q=Львів,+вулиця+Зелена,+251" target="_blank" rel="noopener" class="fmb-map-btn" title="Маршрут на карті">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+    </a>
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/main.js"></script>
 </body>
 </html>

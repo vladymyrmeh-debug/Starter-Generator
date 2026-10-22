@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0F5E57"/>
+      <stop offset="100%" stop-color="#12302C"/>
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="16" fill="url(#grad)"/>
+  <circle cx="32" cy="32" r="22" stroke="#B83A22" stroke-width="4" fill="none"/>
+  <!-- Alternator/Starter rotor silhouette -->
+  <circle cx="32" cy="32" r="14" fill="#B83A22"/>
+  <path d="M32 14 L32 20 M32 44 L32 50 M14 32 L20 32 M44 32 L50 32" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round"/>
+  <polygon points="32,22 36,30 42,30 37,34 39,42 32,37 25,42 27,34 22,30 28,30" fill="#FFFFFF"/>
+</svg>
